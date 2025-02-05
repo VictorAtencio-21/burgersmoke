@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { ShoppingCart, Plus, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,12 +10,11 @@ import {
   SheetTrigger,
   SheetDescription,
 } from "@/components/ui/sheet";
+import { useCart } from "../providers/CartProvider";
 
-const SideCart = ({
-  cart = [],
-  updateQuantity = () => {},
-  getTotalPrice = () => {},
-}) => {
+const SideCart = () => {
+  const { cart, updateCartItemQuantity, getTotalPrice } = useCart();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -46,7 +46,7 @@ const SideCart = ({
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => updateQuantity(index, -1)}
+                  onClick={() => updateCartItemQuantity(index, -1)}
                 >
                   <Minus className="h-4 w-4" />
                 </Button>
@@ -54,7 +54,7 @@ const SideCart = ({
                 <Button
                   variant="outline"
                   size="icon"
-                  onClick={() => updateQuantity(index, 1)}
+                  onClick={() => updateCartItemQuantity(index, 1)}
                 >
                   <Plus className="h-4 w-4" />
                 </Button>

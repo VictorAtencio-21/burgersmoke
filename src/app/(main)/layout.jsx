@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/navigation/Navbar";
+import { CartProvider } from "@/components/providers/CartProvider";
+import SideCart from "@/components/cart/SideCart";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,9 +34,14 @@ export default function RootLayout({ children }) {
       >
         <Navbar
           items={navItems}
-          logo="/Images/Horizontal_logo_2.jpg" // You can use a different logo for admin
+          logo="/Horizontal_logo_2.jpg" // You can use a different logo for admin
         />
-        <main>{children}</main>
+        <main>
+          <CartProvider>
+            {children}
+            <SideCart />
+          </CartProvider>
+        </main>
       </body>
     </html>
   );

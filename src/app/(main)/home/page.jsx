@@ -48,7 +48,7 @@ export default function Home() {
                   name: "Hamburguesa Urbana",
                   description:
                     "Carne Angus, cebollas caramelizadas, queso artesanal",
-                  image: "/Images/burger.png",
+                  image: "/burger.png",
                 },
                 {
                   name: "Ensalada Cityscape",
